@@ -78,7 +78,8 @@ h1 {
 .work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .work .panel { overflow: hidden; }
 .work .shot {
-  aspect-ratio: 16 / 10; border-bottom: 1px solid var(--line); width: 100%; object-fit: cover;
+  /* height: auto — иначе атрибут height у <img> перебивает пропорцию рамки */
+  aspect-ratio: 16 / 10; border-bottom: 1px solid var(--line); width: 100%; height: auto; object-fit: cover;
   background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 24px 24px;
   display: grid; place-items: center; color: var(--dim);
@@ -87,6 +88,8 @@ h1 {
 .work .meta { padding: 16px 18px; }
 .work h3 { margin: 0; font-size: 15px; }
 .work p { margin: 5px 0 0; color: var(--dim); font-size: 13px; }
+.work .go { margin-top: 10px; display: flex; gap: 16px; font-size: 13px; }
+.work .go a { color: var(--accent); text-decoration: none; }
 
 /* 05 contact */
 .contact { border-color: var(--ink); background: var(--ink); color: var(--paper); }
@@ -172,6 +175,9 @@ a, .btn, summary, [role="button"] {
 .top .say { transition: color .18s ease; }
 .top .say .arr { transition: transform .18s ease; }
 .top .say:hover .arr { transform: translateX(3px); }
+
+.work .go a .arr { display: inline-block; transition: transform .18s ease; }
+.work .go a:hover .arr { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: no-preference) {
   .cursor { animation: blink 1.1s step-end .6s infinite; }

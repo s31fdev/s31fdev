@@ -63,19 +63,34 @@ const STEPS = [
 // shot: путь внутри public/ без ведущего слеша, пока пусто — рисуется рамка с подписью
 const WORK = [
   {
+    name: "eduda",
+    text: "Next.js · Prisma · Turborepo — multi-tenant CRM for educational centers: students, groups, schedule, payments.",
+    shot: "work/eduda.png",
+    links: [["repo", "https://github.com/s31fdev/eduda"]],
+  },
+  {
+    name: "keys",
+    text: "Next.js · TypeScript — self-hosted password manager: vault, setup, unlock. Nothing leaves your own server.",
+    shot: "work/keys.png",
+    links: [["repo", "https://github.com/s31fdev/keys"]],
+  },
+  {
+    name: "payments-to-amocrm",
+    text: "Node — Stripe and YooKassa webhooks that move a deal to \"Paid\": signature or IP check, re-fetch, no double delivery.",
+    shot: "work/payments.png",
+    links: [["repo", "https://github.com/s31fdev/payments-to-amocrm"]],
+  },
+  {
+    name: "glyphs",
+    text: "Vanilla JS · Canvas — animated glyph grid, zero dependencies, ~8 KB gzipped.",
+    shot: "work/glyphs.png",
+    links: [["demo", "https://s31fdev.github.io/glyphs/"], ["repo", "https://github.com/s31fdev/glyphs"]],
+  },
+  {
     name: "s31f.dev",
     text: "Astro · CSS — this page, a static one-pager.",
-    shot: "",
-  },
-  {
-    name: "Order hunter bot",
-    text: "Node · Claude Agent SDK · Telegram — watches feeds, triages with an LLM, sends a card with a draft reply.",
-    shot: "",
-  },
-  {
-    name: "fix-my-app",
-    text: "Static landing — the form opens Telegram or email with the message prefilled, no backend.",
-    shot: "",
+    shot: "work/s31f.png",
+    links: [["repo", "https://github.com/s31fdev/s31fdev"]],
   },
 ];
 
@@ -170,7 +185,14 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL :
         <header>~/work/{String(i + 1).padStart(2, "0")}</header>
         {w.shot ? <img class="shot" src={base + w.shot} alt={w.name} width="800" height="500" loading="lazy" />
                 : <div class="shot">no screenshot yet</div>}
-        <div class="meta"><h3>{w.name}</h3><p>{w.text}</p></div>
+        <div class="meta">
+          <h3>{w.name}</h3><p>{w.text}</p>
+          {(w.links ?? []).length > 0 && (
+            <div class="go">
+              {w.links.map(([label, href]) => <a href={href}>{label} <span class="arr">→</span></a>)}
+            </div>
+          )}
+        </div>
       </article>
     ))}
   </section>
